@@ -1,20 +1,22 @@
-package com.joker.ai.xiaozhi.design.factorymethod;
+package com.joker.ai.xiaozhi.design.absfactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public abstract class OrderPizza {
+public class MakePizza {
 
+    private AbsFactory absFactory;
 
+    public MakePizza(AbsFactory absFactory) {
+        setAbsFactory(absFactory);
+    }
 
-
-
-    abstract Pizza createPizza(String orderType);
-
-    public OrderPizza() {
-        do {
-            String type = getType();
-            Pizza pizza = createPizza(type);
+    private void setAbsFactory(AbsFactory absFactory) {
+        this.absFactory = absFactory;
+        Pizza pizza = null;
+        do{
+            String type=getType();
+            pizza = absFactory.createPizza(type);
             if (pizza != null) {
                 pizza.prepare();
                 pizza.bake();
@@ -23,7 +25,9 @@ public abstract class OrderPizza {
             }else{
                 break;
             }
-        }while ( true);
+
+        }while (true);
+
     }
 
     public static String getType() {
