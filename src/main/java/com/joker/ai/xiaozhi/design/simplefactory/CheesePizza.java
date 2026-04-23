@@ -1,5 +1,7 @@
 package com.joker.ai.xiaozhi.design.simplefactory;
 
+import com.joker.ai.xiaozhi.design.simplefactory.Pizza;
+
 public class CheesePizza implements Pizza {
 
     private String name="奶酪pizza";

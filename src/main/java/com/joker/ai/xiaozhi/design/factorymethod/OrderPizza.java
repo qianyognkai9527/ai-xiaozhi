@@ -1,21 +1,20 @@
-package com.joker.ai.xiaozhi.design.simplefactory.v4;
-
-import com.joker.ai.xiaozhi.design.simplefactory.Pizza;
-import com.joker.ai.xiaozhi.design.simplefactory.v3.PizzaFactory;
+package com.joker.ai.xiaozhi.design.factorymethod;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class OrderPizzaV4 {
+public abstract class OrderPizza {
 
 
 
-    private Pizza pizza;
 
-    public OrderPizzaV4() {
+
+    abstract Pizza createPizza(String orderType);
+
+    public OrderPizza() {
         do {
             String type = getType();
-            pizza = PizzaFactory.createPizza(type);
+            Pizza pizza = createPizza(type);
             if (pizza != null) {
                 pizza.prepare();
                 pizza.bake();
@@ -26,6 +25,7 @@ public class OrderPizzaV4 {
             }
         }while ( true);
     }
+
 
     public static String getType() {
 
